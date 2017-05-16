@@ -41,20 +41,68 @@
 #define t_______ KC_TRNS //
 #define esc_____ KC_ESC
 #define tab_____ KC_TAB
+#define enter___ KC_ENTER
 #define del_____ KC_DELETE
 #define space___ KC_SPC
-#define mute____ KC_MUTE
+#define dollar__ KC_DLR
 #define scolon__ KC_SCOLON
 #define bslash__ KC_BSLASH
 #define capslock KC_CAPSLOCK
 #define numlock_ KC_NUMLOCK
 #define asterisk KC_KP_ASTERISK
-#define KC_LBRCK KC_LBRACKET 
-#define KC_RBRCK KC_RBRACKET 
-#define __left__ KC_LEFT
-#define __right_ KC_RIGHT
-#define __win___ KC_LGUI
-#define _lshift_ KC_LSHIFT
+#define amp_____ KC_AMPR
+#define lbracket KC_LBRACKET
+#define rbracket KC_RBRACKET
+#define lparen__ KC_LPRN
+#define rparen__ KC_RPRN
+#define up______ KC_UP
+#define down____ KC_DOWN
+#define left____ KC_LEFT
+#define right___ KC_RIGHT
+#define pgup____ KC_PGUP
+#define pgdown__ KC_PGDN
+#define home____ KC_HOME
+#define end_____ KC_END
+#define win_____ KC_LGUI
+#define print___ KC_PSCR
+#define lshift__ KC_LSHIFT
+#define dot_____ KC_DOT
+#define comma___ KC_COMMA
+#define equals__ KC_EQL
+#define minus___ KC_MINUS
+#define mute____ KC_MUTE
+#define volup___ KC_VOLU
+#define voldown_ KC_VOLD
+#define pad_0___ KC_P0
+#define pad_1___ KC_P1
+#define pad_2___ KC_P2
+#define pad_3___ KC_P3
+#define pad_4___ KC_P4
+#define pad_5___ KC_P5
+#define pad_6___ KC_P6
+#define pad_7___ KC_P7
+#define pad_8___ KC_P8
+#define pad_9___ KC_P9
+#define pad_dot_ KC_PDOT
+#define pad_com_ KC_PCMM
+#define pad_sub_ KC_PMNS
+#define pad_add_ KC_PPLS 
+#define pad_mul_ KC_PAST
+#define pad_div_ KC_PSLS
+#define quot____ KC_QUOT
+#define percent_ KC_PERC
+#define f1______ KC_F1
+#define f2______ KC_F2
+#define f3______ KC_F3
+#define f4______ KC_F4
+#define f5______ KC_F5
+#define f6______ KC_F6
+#define f7______ KC_F7
+#define f8______ KC_F8
+#define f9______ KC_F9
+#define f10_____ KC_F10
+#define f11_____ KC_F11
+#define f12_____ KC_F12
 
 enum function_id {
     F_NML,
@@ -80,10 +128,10 @@ enum macro_id {
     MC_EURO,
     MC_POUND,
 
-    MC_AUML,
-    MC_OUML,
-    MC_UUML,
-    MC_SZLIG
+    M_AUM,
+    M_OUM,
+    M_UUM,
+    M_SZ
 };
 
 /*
@@ -95,8 +143,8 @@ const uint16_t PROGMEM fn_actions[] = {
     [F_HMS] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_H),      // Tap for H, Hold for Shift
     [F_EMS] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_E),      // Tap for E, Hold for Shift
     [F_SMA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_S),      // Tap for S, Hold for Alt
-    [F_QMN] = ACTION_LAYER_TAP_KEY(3, KC_O),            // Tap for Q, Hold for Layer3 (numbers)
-    [F_AMN] = ACTION_LAYER_TAP_KEY(4, KC_A),            // Tap for A, Hold for Layer4 (numpad)
+    [F_AMN] = ACTION_LAYER_TAP_KEY(3, KC_A),            // Tap for A, Hold for Layer3 (numpad)
+    [F_QMN] = ACTION_LAYER_TAP_KEY(4, KC_Q),            // Tap for Q, Hold for Layer4 (numbers)
     [F_IMF] = ACTION_LAYER_TAP_KEY(5, KC_I),            // Tap for I, Hold for Layer5 (fkeys)
     [F_RMG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_R),      // Tap for R, Hold for LGUI (win/command)
     [F_UMG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_U),      // Tap for U, Hold for LGUI (win/command)
@@ -215,31 +263,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
 [L0_DEF] = KEYMAP(  // Layer0, Left hand.
-      esc_____,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5, __win___,
-      tab_____, F(F_QMN),     KC_D, F(F_RMG),    KC_W ,     KC_B, __right_,
+      esc_____,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5, win_____,
+      tab_____, F(F_QMN),     KC_D, F(F_RMG),    KC_W ,     KC_B, right___,
       ________, F(F_AMN), F(F_SMA), F(F_HMS), F(F_TML),     KC_G,
-      F(F_SFT),     KC_Z,     KC_X,     KC_M,     KC_C,     KC_V, __left__,
+      F(F_SFT),     KC_Z,     KC_X,     KC_M,     KC_C,     KC_V, left____,
       mute____, ________, ________, F(F_ALT), F(F_CTL),
-                                                        _lshift_,  KC_HOME,
-                                                                    KC_END,
+                                                        lshift__, home____,
+                                                                  end_____,
                                               tab_____,  KC_BSPC, esc_____,
 
       // Right hand.
-       KC_PSCR,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0, del_____,
-         KC_UP,     KC_J,     KC_F, F(F_UMG),     KC_P, ________, ________,
+      print___,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0, del_____,
+      up______,     KC_J,     KC_F, F(F_UMG),     KC_P, ________, ________,
                     KC_Y, F(F_NML), F(F_EMS), F(F_OMA), F(F_IMF), ________,
-       KC_DOWN,     KC_K,     KC_L, KC_COMMA,   KC_DOT, KC_MINUS, ________,
-                          F(F_CTL), F(F_ALT),  KC_VOLU,  KC_VOLD, numlock_,
-       KC_PGUP, _lshift_,
-       KC_PGDN,
-      ________, KC_ENTER, space___
+      down____,     KC_K,     KC_L, comma___, dot_____, minus___, ________,
+                          F(F_CTL), F(F_ALT), volup___, voldown_, numlock_,
+      pgup____, lshift__,
+      pgdown__,
+      ________, enter___, space___
     ),
 
 [L1_LFT] = KEYMAP(  // Layer1, left hand, to be used with TML
        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-       t_______,  KC_CIRC,  KC_SLSH,    KC_UP, bslash__, asterisk, t_______,
-       t_______,  KC_HOME, __left__,  KC_DOWN, __right_,   KC_END,
-       capslock,  KC_AMPR,  KC_PGUP,  KC_PGDN, scolon__,   KC_DLR, t_______,
+       t_______,  KC_CIRC,  KC_SLSH, up______, bslash__, asterisk, t_______,
+       t_______, home____, left____, down____, right___, end_____,
+       capslock, amp_____, pgup____, pgdown__, scolon__, dollar__, t_______,
        t_______, t_______, t_______, t_______, t_______,
                                                          t_______, t_______,
                                                                    t_______,
@@ -268,10 +316,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 t_______, t_______, t_______,
 
              // right hand, to be used with AML
-        KC_F12,   t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, KC_GRAVE,  KC_LPRN, KC_EXLM,   KC_RPRN, t_______, t_______,
-                    KC_EQL, KC_LBRCK, KC_HASH,  KC_RBRCK,  KC_QUOT, t_______,
-        t_______,  KC_PERC, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, KC_GRAVE, lparen__,  KC_EXLM, rparen__, t_______, t_______,
+                  equals__, lbracket,  KC_HASH, rbracket, quot____, t_______,
+        t_______, percent_, t_______, t_______, t_______, t_______, t_______,
                             t_______, t_______, t_______, t_______, t_______,
         t_______, t_______,
         t_______,
@@ -308,25 +356,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                     t_______,
                                                 t_______, t_______, t_______,
 
-             t_______,t_______,t_______,t_______,t_______,t_______,t_______,
-             t_______,t_______,  KC_P7,  KC_P8,  KC_P9,KC_PSLS,t_______,
-                     t_______,  KC_P4,  KC_P5,  KC_P6,KC_PAST,t_______,
-             t_______,t_______,  KC_P1,  KC_P2,  KC_P3,KC_PMNS,t_______,
-                       KC_P0,KC_PDOT,KC_PCMM,KC_PPLS,KC_PENT,
-        t_______,t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, pad_7___, pad_8___, pad_9___, pad_div_, t_______,
+                  t_______, pad_4___, pad_5___, pad_6___, pad_mul_, t_______,
+        t_______, t_______, pad_1___, pad_2___, pad_3___, pad_sub_, t_______,
+                            pad_0___, pad_dot_, pad_com_, pad_add_, t_______,
+        t_______, t_______,
         t_______,
-        t_______,t_______,t_______
+        t_______, t_______, t_______
     ),
 
 [L5_FKS] = KEYMAP(   // Layer4, f-keys
-        t_______, M(MC_AUML), M(MC_OUML), M(MC_UUML), M(MC_SZLIG), t_______, t_______,
-        t_______,    t_______,      KC_F7,      KC_F8,       KC_F9, t_______, t_______,
-        t_______,     KC_F11,      KC_F4,      KC_F5,       KC_F6,  KC_F12,
-        t_______,    t_______,      KC_F1,      KC_F2,       KC_F3, t_______, t_______,
-        t_______,    t_______,    t_______,    t_______,       KC_F10,
-                                   t_______, t_______,
-                                            t_______,
-                          t_______, t_______, t_______,
+        t_______, M(M_AUM), M(M_OUM), M(M_UUM),  M(M_SZ), t_______, t_______,
+        t_______, t_______, f7______, f8______, f9______, t_______, t_______,
+        t_______, f11_____, f4______, f5______, f6______, f12_____,
+        t_______, t_______, f1______, f2______, f3______, t_______, t_______,
+        t_______, t_______, t_______, t_______, f10_____,
+                                                          t_______, t_______,
+                                                                    t_______,
+                                                t_______, t_______, t_______,
 
              // right hand empty
        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
@@ -351,19 +399,19 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
 
 	switch (id) {
-        case MC_SZLIG: // ß => alt + num 225
+        case M_SZ: // ß => alt + num 225
             return MACRO( I(10), D(LALT), T(P2), T(P2), T(P5), U(LALT), END );
-        case MC_AUML: // ä => alt + num 132
+        case M_AUM: // ä => alt + num 132
             // if ( hold_shift )  {
             //     return MACRO( I(10), D(LALT), T(P1), T(P4), T(P2), U(LALT), END );
             // }
             return MACRO( I(10), D(LALT), T(P1), T(P3), T(P2), U(LALT), END );
-        case MC_OUML: // ö => alt + num 148
+        case M_OUM: // ö => alt + num 148
             // if ( hold_shift ) {
             //     return MACRO( I(10), D(LALT), T(P1), T(P5), T(P3), U(LALT), END );
             // }
             return MACRO( I(10), D(LALT), T(P1), T(P4), T(P8), U(LALT), END );
-        case MC_UUML: // ü => alt + num 129 
+        case M_UUM: // ü => alt + num 129 
             // if ( hold_shift ) {
             //     return MACRO( I(10), D(LALT), T(P1), T(P5), T(P4), U(LALT), END );
             // }
