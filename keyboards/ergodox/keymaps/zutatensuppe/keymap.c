@@ -34,7 +34,8 @@
 #define L2_RGT 2 //
 #define L3_NUM 3 //
 #define L4_FKS 4 //
-#define L5_D2 5 //
+
+#define _____ KC_NO //
 
 enum function_id {
     F_NML,
@@ -45,6 +46,8 @@ enum function_id {
     F_OMA,
     F_AMN,
     F_IMF,
+    F_RMG,
+    F_UMG,
 
     F_CTL,
     F_ALT,
@@ -63,12 +66,6 @@ enum macro_id {
     MC_SZLIG
 };
 
-enum tapdance_id {
-
-    // tapdance
-    TD_SHIFT
-};
-
 /*
  * Fn action definition
  */
@@ -80,18 +77,13 @@ const uint16_t PROGMEM fn_actions[] = {
     [F_SMA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_S),      // Tap for S, Hold for Alt
     [F_AMN] = ACTION_LAYER_TAP_KEY(3, KC_A),            // Tap for A, Hold for Layer3 (numpad)
     [F_IMF] = ACTION_LAYER_TAP_KEY(4, KC_I),            // Tap for I, Hold for Layer4 (fkeys)
+    [F_RMG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_R),      // Tap for R, Hold for LGUI (win/command)
+    [F_UMG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_U),      // Tap for U, Hold for LGUI (win/command)
+    [F_OMA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_O),      // Tap for O, Hold for Alt
 
     [F_CTL]  = ACTION_MODS_ONESHOT(MOD_LCTL), // oneshot CTRL
-    [F_OMA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_O),      // Tap for O, Hold for Alt
     [F_ALT]  = ACTION_MODS_ONESHOT(MOD_LALT), // oneshot ALT
     [F_SFT]  = ACTION_MODS_ONESHOT(MOD_LSFT), // oneshot SHIFT
-};
-
-/*
- * Tap Dance definition
- */
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_SHIFT] = ACTION_TAP_DANCE_DOUBLE(KC_LSHIFT, KC_CAPS), // 1: shift    2: capslock
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -99,35 +91,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------.           ,----------------------------------------------------.
      * |  Esc   |   1  |  2  |  3  |  4   |  5  | LGUI |           | PSCR |   6   |   7   |   8  |  9   |   0  |  Del   |
      * |--------+------+-----+-----+------+------------|           |------+-------+-------+------+------+------+--------|
-     * |  Tab   |   Q  |  D  |  R  |  W   |  B  | Right|           |  Up  |   J   |   F   |   U  |  P   |   +  | TO(D2) |
+     * |  Tab   |   Q  |  D  |  R  |  W   |  B  | Right|           |  Up  |   J   |   F   |   U  |  P   |      |        |
      * |--------+------+-----+-----+------+-----|      |           |      |-------+-------+------+------+------+--------|
-     * |   $    |   A  |  S  |  H  |  T   |  G  |------|           |------|   Y   |   N   |   E  |  O   |   I  |    ;:  |
+     * |        |   A  |  S  |  H  |  T   |  G  |------|           |------|   Y   |   N   |   E  |  O   |   I  |        |
      * |--------+------+-----+-----+------+-----| Left |           | Down |-------+-------+------+------+------+--------|
      * | LShift |   Z  |  X  |  M  |  C   |  V  |      |           |      |   K   |   L   |  <,  |  >.  |  -_  |        |
      * `--------+------+-----+-----+------+------------'           `--------------+-------+------+------+------+--------'
-     *  |  Mute |  ~   |     | LAlt| LCtrl|                                       | RCtrl | RAlt | VOLU | VOLD |NUMLOCK|
+     *  |  Mute |      |     | LAlt| LCtrl|                                       | RCtrl | RAlt | VOLU | VOLD |NUMLOCK|
      *  `---------------------------------'                                       `------------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |LShift| Home |       | PgUp |LShift|
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      | End  |       |PgDown|      |      |
      *                                 | Tab  | Bkspc|------|       |------|Enter |Space |
-     *                                 |      |      | ESC  |       |  /   |      |      |
+     *                                 |      |      | ESC  |       |      |      |      |
      *                                 `--------------------'       `--------------------'
-     *
+     * 
      *
      * Layer divided in two so we can have transparent keys on the Layer Tap keys
      * Layer 1: Left                                                  Layer2: Right
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |        |  F1  |  F2  |  F3  |  F4  |  F5  |  F11 |           | F12  |  F6  |  F7  |  F8  | F9   |  F10 |  Bkspc |
+     * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |   `    |  ^   |  [   |  Up  |  ]   |  *   | Left |           |  Up  |  ~   |  (   |  !   |  )   |  $   |        |
+     * |        |  ^   |  /?  |  Up  |  \|  |  *   | Left |           |  Up  |  `~  |  (   |  !   |  )   |      |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |   /    | Home | Left | Down |Right |  End |------|           |------|  =   |  {   |  ?   |  }   |  '   |   \    |
+     * |        | Home | Left | Down |Right |  End |------|           |------|  =+  |  [{  |  #   |  ]}  |  '"  |        |
      * |--------+------+------+------+------+------|  End |           |PgDown|------+------+------+------+------+--------|
-     * | CapsLck|  &   |  |   |  +   |  ;   |  :   |      |           |      |  %   |  <   |  #   |  >   |  \   |        |
+     * | CapsLck|  &   |      |      |  ;:  |  $   |      |           |      |  %   |      |      |      |      |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |      |  €   |  £   |      |      |                                       |      |      |      |      |      |
+     *   |      |      |      |      |      |                                       |      |      |      |      |      |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |      |       |      |      |
@@ -157,37 +149,58 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                 |      |      |------|       |------|      |      |
      *                                 |      |      |      |       |      |      |      |
      *                                 `--------------------'       `--------------------'
+     *
+     * FKeys layer
+     * Layer 4:
+     * ,--------------------------------------------------.           ,--------------------------------------------------.
+     * |        |  ä   |  ö   |  ü   |  ß   |      |      |           |      |      |      |      |      |      |        |
+     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+     * |        |      |  F7  |  F8  |  F9  |      |      |           |      |      |      |      |      |      |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        |  F11 |  F4  |  F5  |  F6  |  F12 |------|           |------|      |      |      |      |      |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        |      |  F1  |  F2  |  F3  |      |      |           |      |      |      |      |      |      |        |
+     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+     *   |      |      |      |      |  F10 |                                       |      |      |      |      |      |
+     *   `----------------------------------'                                       `----------------------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        |      |      |       |      |      |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |      |       |      |      |      |
+     *                                 |      |      |------|       |------|      |      |
+     *                                 |      |      |      |       |      |      |      |
+     *                                 `--------------------'       `--------------------'
      */
 
 [L0_DEF] = KEYMAP(  // Layer0, Left hand.
       KC_ESC,     KC_1,     KC_2,      KC_3,    KC_4,   KC_5,  KC_LGUI,
-      KC_TAB,     KC_Q,     KC_D,      KC_R,    KC_W ,  KC_B, KC_RIGHT,
-      KC_DLR, F(F_AMN), F(F_SMA),  F(F_HMS), F(F_TML),  KC_G,
+      KC_TAB,     KC_Q,     KC_D,      F(F_RMG),    KC_W ,  KC_B, KC_RIGHT,
+      _____, F(F_AMN), F(F_SMA),  F(F_HMS), F(F_TML),  KC_G,
     F(F_SFT),     KC_Z,     KC_X,      KC_M,     KC_C,  KC_V,  KC_LEFT,
-     KC_MUTE,  KC_TILD,   KC_EQL,  F(F_ALT), F(F_CTL),
+     KC_MUTE,    _____,    _____,  F(F_ALT), F(F_CTL),
 
                                      KC_LSHIFT, KC_HOME,
                                               KC_END,
                                  KC_TAB, KC_BSPC, KC_ESC,
 
              // Right hand.
-             KC_PSCR,    KC_6,     KC_7,      KC_8,        KC_9,        KC_0,   KC_DELETE,
-               KC_UP,    KC_J,     KC_F,      KC_U,        KC_P,  KC_KP_PLUS,   TO(L5_D2),
-                      KC_Y,   F(F_NML),    F(F_EMS),      F(F_OMA),        F(F_IMF),   KC_SCOLON,
-             KC_DOWN,    KC_K,     KC_L,  KC_COMMA,      KC_DOT,    KC_MINUS,   KC_NO,
+             KC_PSCR,    KC_6,     KC_7,       KC_8,        KC_9,      KC_0,   KC_DELETE,
+               KC_UP,    KC_J,     KC_F,   F(F_UMG),        KC_P,     _____,   _____,
+                         KC_Y, F(F_NML),   F(F_EMS),    F(F_OMA),  F(F_IMF),   _____,
+             KC_DOWN,    KC_K,     KC_L,   KC_COMMA,      KC_DOT,  KC_MINUS,   _____,
                           F(F_CTL),  F(F_ALT) ,     KC_VOLU,     KC_VOLD,   KC_NUMLOCK,
 
            KC_PGUP, KC_LSHIFT,
            KC_PGDN,
-           KC_LGUI,  KC_ENTER, KC_SPC
+           _____,  KC_ENTER, KC_SPC
     ),
 
 [L1_LFT] = KEYMAP(  // Layer1, left hand, to be used with TML
             KC_TRNS,     KC_F1,       KC_F2,       KC_F3,       KC_F4,          KC_F5,  KC_F11,
-           KC_GRAVE,  KC_CIRC, KC_LBRACKET,       KC_UP, KC_RBRACKET, KC_KP_ASTERISK, KC_HOME,
-            KC_SLSH,   KC_HOME,     KC_LEFT,     KC_DOWN,    KC_RIGHT,         KC_END,
-        KC_CAPSLOCK,  KC_AMPR,     KC_PIPE,  KC_KP_PLUS,   KC_SCOLON,       KC_COLON,  KC_END,
-            KC_TRNS,   M(MC_EURO),    M(MC_POUND),     KC_TRNS,     KC_TRNS,
+           KC_TRNS,  KC_CIRC, KC_SLSH,       KC_UP, KC_BSLASH, KC_KP_ASTERISK, KC_HOME,
+            KC_TRNS,   KC_HOME,     KC_LEFT,     KC_DOWN,    KC_RIGHT,         KC_END,
+        KC_CAPSLOCK,  KC_AMPR,     KC_TRNS,  KC_TRNS,   KC_SCOLON,       KC_DLR,  KC_END,
+            KC_TRNS,   KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,
 
                                        KC_TRNS, KC_TRNS,
                                              KC_TRNS,
@@ -217,9 +230,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
              // right hand, to be used with AML
         KC_F12,     KC_F6,     KC_F7,     KC_F8,    KC_F9,    KC_F10,   KC_BSPC,
-        KC_PGUP,  KC_TILD,   KC_LPRN,   KC_EXLM,  KC_RPRN,    KC_DLR,   KC_TRNS,
-                   KC_EQL,   KC_LCBR,   KC_QUES,  KC_RCBR,   KC_QUOT, KC_BSLASH,
-        KC_PGDN,  KC_PERC,     KC_LT,   KC_HASH,    KC_GT, KC_BSLASH,   KC_TRNS,
+        KC_PGUP,  KC_GRAVE,   KC_LPRN,   KC_EXLM,  KC_RPRN,    KC_TRNS,   KC_TRNS,
+                   KC_EQL,   KC_LBRACKET,   KC_HASH,  KC_RBRACKET,   KC_QUOT, KC_TRNS,
+        KC_PGDN,  KC_PERC,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,   KC_TRNS,
                              KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,
          KC_TRNS, KC_TRNS,
          KC_TRNS,
@@ -266,30 +279,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,KC_TRNS,
         KC_TRNS,
         KC_TRNS,KC_TRNS,KC_TRNS
-    ),
-
-[L5_D2] = KEYMAP(  // Layer0, Left hand.
-        KC_ESC,     KC_1,       KC_2,      KC_3,      KC_4,   KC_5,  KC_LGUI,
-        KC_TAB,     KC_Q,       KC_D,      KC_R,     KC_W ,   KC_B, KC_RIGHT,
-        KC_DLR, F(F_AMN),   F(F_SMA),  F(F_HMS),  F(F_TML),   KC_G,
-     KC_LSHIFT,     KC_Z,       KC_X,      KC_M,      KC_C,   KC_V,  KC_LEFT,
-       KC_MUTE,  KC_TILD,     KC_EQL,   KC_LALT,   KC_LCTL,
-
-                                     KC_LSHIFT, KC_HOME,
-                                              KC_END,
-                                 KC_TAB, KC_BSPC, KC_ESC,
-
-             // Right hand.
-             KC_PSCR,    KC_6,     KC_7,      KC_8,        KC_9,        KC_0,   KC_DELETE,
-               KC_UP,    KC_J,     KC_F,      KC_U,        KC_P,  KC_KP_PLUS,   TO(L0_DEF),
-                      KC_Y,   F(F_NML),    F(F_EMS),      F(F_OMA),        F(F_IMF),   KC_SCOLON,
-             KC_DOWN,    KC_K,     KC_L,  KC_COMMA,      KC_DOT,    KC_MINUS,   KC_NO,
-                          F(F_CTL),  F(F_ALT) ,     KC_VOLU,     KC_VOLD,   KC_NUMLOCK,
-
-           KC_PGUP, KC_LSHIFT,
-           KC_PGDN,
-          KC_SLSH,  KC_ENTER, KC_SPC
-    ),
+    )
 
 };
 
@@ -303,10 +293,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
 
 	switch (id) {
-		case MC_EURO: // € => alt + num 0128
-            return MACRO( I(10), D(LALT), T(P0), T(P1), T(P2), T(P8), U(LALT), END );
-		case MC_POUND: // £ => alt + num 156
-            return MACRO( I(10), D(LALT), T(P1), T(P5), T(P6), U(LALT), END );
         case MC_SZLIG: // ß => alt + num 225
             return MACRO( I(10), D(LALT), T(P2), T(P2), T(P5), U(LALT), END );
         case MC_AUML: // ä => alt + num 132
