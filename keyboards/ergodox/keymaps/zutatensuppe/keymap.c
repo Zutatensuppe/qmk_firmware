@@ -33,9 +33,28 @@
 #define L1_LFT 1 //
 #define L2_RGT 2 //
 #define L3_NUM 3 //
-#define L4_FKS 4 //
+#define L4_NUM 4 //
+#define L5_FKS 5 //
 
-#define _____ KC_NO //
+// defining keys for code layout purposes
+#define ________ KC_NO //
+#define t_______ KC_TRNS //
+#define esc_____ KC_ESC
+#define tab_____ KC_TAB
+#define del_____ KC_DELETE
+#define space___ KC_SPC
+#define mute____ KC_MUTE
+#define scolon__ KC_SCOLON
+#define bslash__ KC_BSLASH
+#define capslock KC_CAPSLOCK
+#define numlock_ KC_NUMLOCK
+#define asterisk KC_KP_ASTERISK
+#define KC_LBRCK KC_LBRACKET 
+#define KC_RBRCK KC_RBRACKET 
+#define __left__ KC_LEFT
+#define __right_ KC_RIGHT
+#define __win___ KC_LGUI
+#define _lshift_ KC_LSHIFT
 
 enum function_id {
     F_NML,
@@ -45,6 +64,7 @@ enum function_id {
     F_SMA,
     F_OMA,
     F_AMN,
+    F_QMN,
     F_IMF,
     F_RMG,
     F_UMG,
@@ -75,8 +95,9 @@ const uint16_t PROGMEM fn_actions[] = {
     [F_HMS] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_H),      // Tap for H, Hold for Shift
     [F_EMS] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_E),      // Tap for E, Hold for Shift
     [F_SMA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_S),      // Tap for S, Hold for Alt
-    [F_AMN] = ACTION_LAYER_TAP_KEY(3, KC_A),            // Tap for A, Hold for Layer3 (numpad)
-    [F_IMF] = ACTION_LAYER_TAP_KEY(4, KC_I),            // Tap for I, Hold for Layer4 (fkeys)
+    [F_QMN] = ACTION_LAYER_TAP_KEY(3, KC_O),            // Tap for Q, Hold for Layer3 (numbers)
+    [F_AMN] = ACTION_LAYER_TAP_KEY(4, KC_A),            // Tap for A, Hold for Layer4 (numpad)
+    [F_IMF] = ACTION_LAYER_TAP_KEY(5, KC_I),            // Tap for I, Hold for Layer5 (fkeys)
     [F_RMG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_R),      // Tap for R, Hold for LGUI (win/command)
     [F_UMG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_U),      // Tap for U, Hold for LGUI (win/command)
     [F_OMA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_O),      // Tap for O, Hold for Alt
@@ -113,11 +134,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.           ,--------------------------------------------------.
      * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |        |  ^   |  /?  |  Up  |  \|  |  *   | Left |           |  Up  |  `~  |  (   |  !   |  )   |      |        |
+     * |        |  ^   |  /?  |  Up  |  \|  |  *   |      |           |      |  `~  |  (   |  !   |  )   |      |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * |        | Home | Left | Down |Right |  End |------|           |------|  =+  |  [{  |  #   |  ]}  |  '"  |        |
-     * |--------+------+------+------+------+------|  End |           |PgDown|------+------+------+------+------+--------|
-     * | CapsLck|  &   |      |      |  ;:  |  $   |      |           |      |  %   |      |      |      |      |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * | CapsLck|  &   | PgUp |PgDown|  ;:  |  $   |      |           |      |  %   |      |      |      |      |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   |      |      |      |      |      |                                       |      |      |      |      |      |
      *   `----------------------------------'                                       `----------------------------------'
@@ -129,8 +150,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                 |      |      |      |       |      |      |      |
      *                                 `--------------------'       `--------------------'
      *
-     * Numbers layer
+     * Numbers layer (normal numbers)
      * Layer 3:
+     * ,--------------------------------------------------.           ,--------------------------------------------------.
+     * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+     * |        |      |      |      |      |      |      |           |      |      |  7   |  8   |  9   |      |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        |      |      |      |      |      |------|           |------|      |  4   |  5   |  6   |      |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        |      |      |      |      |      |      |           |      |      |  1   |  2   |  3   |      |        |
+     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+     *   |      |      |      |      |      |                                       |  0   |      |      |      |      |
+     *   `----------------------------------'                                       `----------------------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        |      |      |       |      |      |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |      |       |      |      |      |
+     *                                 |      |      |------|       |------|      |      |
+     *                                 |      |      |      |       |      |      |      |
+     *                                 `--------------------'       `--------------------'
+     *
+     * Numbers layer (NUMPAD)
+     * Layer 4:
      * ,--------------------------------------------------.           ,--------------------------------------------------.
      * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
@@ -151,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                 `--------------------'       `--------------------'
      *
      * FKeys layer
-     * Layer 4:
+     * Layer 5:
      * ,--------------------------------------------------.           ,--------------------------------------------------.
      * |        |  ä   |  ö   |  ü   |  ß   |      |      |           |      |      |      |      |      |      |        |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
@@ -173,112 +215,128 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
 [L0_DEF] = KEYMAP(  // Layer0, Left hand.
-      KC_ESC,     KC_1,     KC_2,      KC_3,    KC_4,   KC_5,  KC_LGUI,
-      KC_TAB,     KC_Q,     KC_D,      F(F_RMG),    KC_W ,  KC_B, KC_RIGHT,
-      _____, F(F_AMN), F(F_SMA),  F(F_HMS), F(F_TML),  KC_G,
-    F(F_SFT),     KC_Z,     KC_X,      KC_M,     KC_C,  KC_V,  KC_LEFT,
-     KC_MUTE,    _____,    _____,  F(F_ALT), F(F_CTL),
+      esc_____,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5, __win___,
+      tab_____, F(F_QMN),     KC_D, F(F_RMG),    KC_W ,     KC_B, __right_,
+      ________, F(F_AMN), F(F_SMA), F(F_HMS), F(F_TML),     KC_G,
+      F(F_SFT),     KC_Z,     KC_X,     KC_M,     KC_C,     KC_V, __left__,
+      mute____, ________, ________, F(F_ALT), F(F_CTL),
+                                                        _lshift_,  KC_HOME,
+                                                                    KC_END,
+                                              tab_____,  KC_BSPC, esc_____,
 
-                                     KC_LSHIFT, KC_HOME,
-                                              KC_END,
-                                 KC_TAB, KC_BSPC, KC_ESC,
-
-             // Right hand.
-             KC_PSCR,    KC_6,     KC_7,       KC_8,        KC_9,      KC_0,   KC_DELETE,
-               KC_UP,    KC_J,     KC_F,   F(F_UMG),        KC_P,     _____,   _____,
-                         KC_Y, F(F_NML),   F(F_EMS),    F(F_OMA),  F(F_IMF),   _____,
-             KC_DOWN,    KC_K,     KC_L,   KC_COMMA,      KC_DOT,  KC_MINUS,   _____,
-                          F(F_CTL),  F(F_ALT) ,     KC_VOLU,     KC_VOLD,   KC_NUMLOCK,
-
-           KC_PGUP, KC_LSHIFT,
-           KC_PGDN,
-           _____,  KC_ENTER, KC_SPC
+      // Right hand.
+       KC_PSCR,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0, del_____,
+         KC_UP,     KC_J,     KC_F, F(F_UMG),     KC_P, ________, ________,
+                    KC_Y, F(F_NML), F(F_EMS), F(F_OMA), F(F_IMF), ________,
+       KC_DOWN,     KC_K,     KC_L, KC_COMMA,   KC_DOT, KC_MINUS, ________,
+                          F(F_CTL), F(F_ALT),  KC_VOLU,  KC_VOLD, numlock_,
+       KC_PGUP, _lshift_,
+       KC_PGDN,
+      ________, KC_ENTER, space___
     ),
 
 [L1_LFT] = KEYMAP(  // Layer1, left hand, to be used with TML
-            KC_TRNS,     KC_F1,       KC_F2,       KC_F3,       KC_F4,          KC_F5,  KC_F11,
-           KC_TRNS,  KC_CIRC, KC_SLSH,       KC_UP, KC_BSLASH, KC_KP_ASTERISK, KC_HOME,
-            KC_TRNS,   KC_HOME,     KC_LEFT,     KC_DOWN,    KC_RIGHT,         KC_END,
-        KC_CAPSLOCK,  KC_AMPR,     KC_TRNS,  KC_TRNS,   KC_SCOLON,       KC_DLR,  KC_END,
-            KC_TRNS,   KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,
-
-                                       KC_TRNS, KC_TRNS,
-                                             KC_TRNS,
-                                KC_TRNS, KC_DELETE, KC_TRNS,
+       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+       t_______,  KC_CIRC,  KC_SLSH,    KC_UP, bslash__, asterisk, t_______,
+       t_______,  KC_HOME, __left__,  KC_DOWN, __right_,   KC_END,
+       capslock,  KC_AMPR,  KC_PGUP,  KC_PGDN, scolon__,   KC_DLR, t_______,
+       t_______, t_______, t_______, t_______, t_______,
+                                                         t_______, t_______,
+                                                                   t_______,
+                                               t_______, del_____, t_______,
 
              // right hand empty
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-        KC_TRNS,KC_TRNS,
-        KC_TRNS,
-        KC_TRNS,KC_TRNS,KC_TRNS
+       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+                 t_______, t_______, t_______, t_______, t_______, t_______,
+       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+                           t_______, t_______, t_______, t_______, t_______,
+       t_______, t_______,
+       t_______,
+       t_______, t_______,t_______
     ),
 
 
 [L2_RGT] = KEYMAP(   // Layer2, left hand, empty
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                      KC_TRNS, KC_TRNS,
-                                            KC_TRNS,
-                                KC_TRNS, KC_TRNS, KC_TRNS,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______,
+                                                          t_______, t_______,
+                                                                    t_______,
+                                                t_______, t_______, t_______,
 
              // right hand, to be used with AML
-        KC_F12,     KC_F6,     KC_F7,     KC_F8,    KC_F9,    KC_F10,   KC_BSPC,
-        KC_PGUP,  KC_GRAVE,   KC_LPRN,   KC_EXLM,  KC_RPRN,    KC_TRNS,   KC_TRNS,
-                   KC_EQL,   KC_LBRACKET,   KC_HASH,  KC_RBRACKET,   KC_QUOT, KC_TRNS,
-        KC_PGDN,  KC_PERC,     KC_TRNS,   KC_TRNS,    KC_TRNS, KC_TRNS,   KC_TRNS,
-                             KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,
-         KC_TRNS, KC_TRNS,
-         KC_TRNS,
-         KC_TRNS, KC_TRNS, KC_TRNS
+        KC_F12,   t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, KC_GRAVE,  KC_LPRN, KC_EXLM,   KC_RPRN, t_______, t_______,
+                    KC_EQL, KC_LBRCK, KC_HASH,  KC_RBRCK,  KC_QUOT, t_______,
+        t_______,  KC_PERC, t_______, t_______, t_______, t_______, t_______,
+                            t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______,
+        t_______,
+        t_______, t_______, t_______
     ),
 
 [L3_NUM] = KEYMAP(   // Layer3, numbers
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                      KC_TRNS, KC_TRNS,
-                                            KC_TRNS,
-                                KC_TRNS, KC_TRNS, KC_TRNS,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______,
+                                                          t_______, t_______,
+                                                                    t_______,
+                                                t_______, t_______, t_______,
 
-             // right hand empty
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-             KC_TRNS,KC_TRNS,  KC_P7,  KC_P8,  KC_P9,KC_PSLS,KC_TRNS,
-                     KC_TRNS,  KC_P4,  KC_P5,  KC_P6,KC_PAST,KC_TRNS,
-             KC_TRNS,KC_TRNS,  KC_P1,  KC_P2,  KC_P3,KC_PMNS,KC_TRNS,
-                       KC_P0,KC_PDOT,KC_PCMM,KC_PPLS,KC_PENT,
-        KC_TRNS,KC_TRNS,
-        KC_TRNS,
-        KC_TRNS,KC_TRNS,KC_TRNS
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______,     KC_7,     KC_8,     KC_9, t_______, t_______,
+                  t_______,     KC_4,     KC_5,     KC_6, t_______, t_______,
+        t_______, t_______,     KC_1,     KC_2,     KC_3, t_______, t_______,
+                                KC_0, t_______, t_______, t_______, t_______,
+        t_______, t_______,
+        t_______,
+        t_______, t_______, t_______
     ),
 
-[L4_FKS] = KEYMAP(   // Layer4, f-keys
-        KC_TRNS, M(MC_AUML), M(MC_OUML), M(MC_UUML), M(MC_SZLIG), KC_TRNS, KC_TRNS,
-        KC_TRNS,    KC_TRNS,      KC_F7,      KC_F8,       KC_F9, KC_TRNS, KC_TRNS,
-        KC_TRNS,     KC_F11,      KC_F4,      KC_F5,       KC_F6,  KC_F12,
-        KC_TRNS,    KC_TRNS,      KC_F1,      KC_F2,       KC_F3, KC_TRNS, KC_TRNS,
-        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,       KC_F10,
-                                   KC_TRNS, KC_TRNS,
-                                            KC_TRNS,
-                          KC_TRNS, KC_TRNS, KC_TRNS,
+[L4_NUM] = KEYMAP(   // Layer3, numbers (numpad)
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+        t_______, t_______, t_______, t_______, t_______,
+                                                          t_______, t_______,
+                                                                    t_______,
+                                                t_______, t_______, t_______,
+
+             t_______,t_______,t_______,t_______,t_______,t_______,t_______,
+             t_______,t_______,  KC_P7,  KC_P8,  KC_P9,KC_PSLS,t_______,
+                     t_______,  KC_P4,  KC_P5,  KC_P6,KC_PAST,t_______,
+             t_______,t_______,  KC_P1,  KC_P2,  KC_P3,KC_PMNS,t_______,
+                       KC_P0,KC_PDOT,KC_PCMM,KC_PPLS,KC_PENT,
+        t_______,t_______,
+        t_______,
+        t_______,t_______,t_______
+    ),
+
+[L5_FKS] = KEYMAP(   // Layer4, f-keys
+        t_______, M(MC_AUML), M(MC_OUML), M(MC_UUML), M(MC_SZLIG), t_______, t_______,
+        t_______,    t_______,      KC_F7,      KC_F8,       KC_F9, t_______, t_______,
+        t_______,     KC_F11,      KC_F4,      KC_F5,       KC_F6,  KC_F12,
+        t_______,    t_______,      KC_F1,      KC_F2,       KC_F3, t_______, t_______,
+        t_______,    t_______,    t_______,    t_______,       KC_F10,
+                                   t_______, t_______,
+                                            t_______,
+                          t_______, t_______, t_______,
 
              // right hand empty
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-             KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                     KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-        KC_TRNS,KC_TRNS,
-        KC_TRNS,
-        KC_TRNS,KC_TRNS,KC_TRNS
+       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+                 t_______, t_______, t_______, t_______, t_______, t_______,
+       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
+                           t_______, t_______, t_______, t_______, t_______,
+       t_______, t_______,
+       t_______,
+       t_______, t_______,t_______
     )
 
 };
