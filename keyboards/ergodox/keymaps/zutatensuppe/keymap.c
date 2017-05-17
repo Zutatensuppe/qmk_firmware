@@ -37,122 +37,155 @@
 #define L5_FKS 5 //
 
 // defining keys for code layout purposes
-#define ________ KC_NO //
-#define t_______ KC_TRNS //
-#define esc_____ KC_ESC
-#define tab_____ KC_TAB
-#define enter___ KC_ENTER
-#define del_____ KC_DELETE
-#define space___ KC_SPC
-#define dollar__ KC_DLR
-#define scolon__ KC_SCOLON
-#define bslash__ KC_BSLASH
-#define capslock KC_CAPSLOCK
-#define numlock_ KC_NUMLOCK
-#define asterisk KC_KP_ASTERISK
-#define amp_____ KC_AMPR
-#define lbracket KC_LBRACKET
-#define rbracket KC_RBRACKET
-#define lparen__ KC_LPRN
-#define rparen__ KC_RPRN
-#define up______ KC_UP
-#define down____ KC_DOWN
-#define left____ KC_LEFT
-#define right___ KC_RIGHT
-#define pgup____ KC_PGUP
-#define pgdown__ KC_PGDN
-#define home____ KC_HOME
-#define end_____ KC_END
-#define win_____ KC_LGUI
-#define print___ KC_PSCR
-#define lshift__ KC_LSHIFT
-#define dot_____ KC_DOT
-#define comma___ KC_COMMA
-#define equals__ KC_EQL
-#define minus___ KC_MINUS
-#define mute____ KC_MUTE
-#define volup___ KC_VOLU
-#define voldown_ KC_VOLD
-#define pad_0___ KC_P0
-#define pad_1___ KC_P1
-#define pad_2___ KC_P2
-#define pad_3___ KC_P3
-#define pad_4___ KC_P4
-#define pad_5___ KC_P5
-#define pad_6___ KC_P6
-#define pad_7___ KC_P7
-#define pad_8___ KC_P8
-#define pad_9___ KC_P9
-#define pad_dot_ KC_PDOT
-#define pad_com_ KC_PCMM
-#define pad_sub_ KC_PMNS
-#define pad_add_ KC_PPLS 
-#define pad_mul_ KC_PAST
-#define pad_div_ KC_PSLS
-#define quot____ KC_QUOT
-#define percent_ KC_PERC
-#define f1______ KC_F1
-#define f2______ KC_F2
-#define f3______ KC_F3
-#define f4______ KC_F4
-#define f5______ KC_F5
-#define f6______ KC_F6
-#define f7______ KC_F7
-#define f8______ KC_F8
-#define f9______ KC_F9
-#define f10_____ KC_F10
-#define f11_____ KC_F11
-#define f12_____ KC_F12
+#define ______ KC_NO //
+#define _____t KC_TRNS //
+#define esc___ KC_ESC
+#define tab___ KC_TAB
+#define enter_ KC_ENTER
+#define del___ KC_DELETE
+#define bspc__ KC_BSPC
+#define space_ KC_SPC
+#define dollar KC_DLR
+#define scolon KC_SCOLON
+#define bslash KC_BSLASH
+#define capslo KC_CAPSLOCK
+#define numlo_ KC_NUMLOCK
+#define aster_ KC_KP_ASTERISK
+#define amp___ KC_AMPR
+#define lbrck_ KC_LBRACKET
+#define rbrck_ KC_RBRACKET
+#define lprn__ KC_LPRN
+#define rprn__ KC_RPRN
+#define up____ KC_UP
+#define down__ KC_DOWN
+#define left__ KC_LEFT
+#define right_ KC_RIGHT
+#define pgup__ KC_PGUP
+#define pgdn__ KC_PGDN
+#define home__ KC_HOME
+#define end___ KC_END
+#define win___ KC_LGUI
+#define print_ KC_PSCR
+#define lshft_ KC_LSHIFT
+#define dot___ KC_DOT
+#define comma_ KC_COMMA
+#define equls_ KC_EQL
+#define minus_ KC_MINUS
+#define mute__ KC_MUTE
+#define volup_ KC_VOLU
+#define voldn_ KC_VOLD
+#define pad_0_ KC_P0
+#define pad_1_ KC_P1
+#define pad_2_ KC_P2
+#define pad_3_ KC_P3
+#define pad_4_ KC_P4
+#define pad_5_ KC_P5
+#define pad_6_ KC_P6
+#define pad_7_ KC_P7
+#define pad_8_ KC_P8
+#define pad_9_ KC_P9
+#define p_dot_ KC_PDOT
+#define p_com_ KC_PCMM
+#define p_sub_ KC_PMNS
+#define p_add_ KC_PPLS 
+#define p_mul_ KC_PAST
+#define p_div_ KC_PSLS
+#define quot__ KC_QUOT
+#define perc__ KC_PERC
+#define f1____ KC_F1
+#define f2____ KC_F2
+#define f3____ KC_F3
+#define f4____ KC_F4
+#define f5____ KC_F5
+#define f6____ KC_F6
+#define f7____ KC_F7
+#define f8____ KC_F8
+#define f9____ KC_F9
+#define f10___ KC_F10
+#define f11___ KC_F11
+#define f12___ KC_F12
+#define hash__ KC_HASH
+#define excl__ KC_EXLM
+#define btick_ KC_GRAVE
+#define circ__ KC_CIRC
+#define slash_ KC_SLSH
+
+#define KEYMAP_EASY(                                            \
+                                                                \
+    /* left hand */                /* right hand */             \
+    k00,k01,k02,k03,k04,k05,k06,   k07,k08,k09,k0A,k0B,k0C,k0D, \
+    k10,k11,k12,k13,k14,k15,k16,   k17,k18,k19,k1A,k1B,k1C,k1D, \
+    k20,k21,k22,k23,k24,k25,           k28,k29,k2A,k2B,k2C,k2D, \
+    k30,k31,k32,k33,k34,k35,k36,   k37,k38,k39,k3A,k3B,k3C,k3D, \
+    k40,k41,k42,k43,k44,                   k49,k4A,k4B,k4C,k4D, \
+                        k55,k56,   k57,k58,                     \
+                            k54,   k59,                         \
+                    k53,k52,k51,   k5C,k5B,k5A                  \
+    )                                                           \
+                                                                \
+   /* matrix positions */                                       \
+   {                                                            \
+    { k00, k10, k20, k30, k40, KC_NO },   \
+    { k01, k11, k21, k31, k41, k51 },   \
+    { k02, k12, k22, k32, k42, k52 },   \
+    { k03, k13, k23, k33, k43, k53 },   \
+    { k04, k14, k24, k34, k44, k54 },   \
+    { k05, k15, k25, k35, KC_NO, k55 },   \
+    { k06, k16, KC_NO, k36, KC_NO, k56 },   \
+                                                                 \
+    { k07, k17, KC_NO, k37,KC_NO, k57 },   \
+    { k08, k18, k28, k38,KC_NO, k58 },   \
+    { k09, k19, k29, k39, k49, k59 },   \
+    { k0A, k1A, k2A, k3A, k4A, k5A },   \
+    { k0B, k1B, k2B, k3B, k4B, k5B },   \
+    { k0C, k1C, k2C, k3C, k4C, k5C },   \
+    { k0D, k1D, k2D, k3D, k4D, KC_NO }    \
+   }
 
 enum function_id {
-    F_NML,
-    F_TML,
-    F_HMS,
-    F_EMS,
-    F_SMA,
-    F_OMA,
-    F_AMN,
-    F_QMN,
-    F_IMF,
-    F_RMG,
-    F_UMG,
+    fNL,
+    fTL,
+    fHS,
+    fES,
+    fSA,
+    fOA,
+    fAN,
+    fQN,
+    fIF,
+    fRG,
+    fUG,
 
-    F_CTL,
-    F_ALT,
-    F_SFT,
+    f_C,
+    f_A,
+    f_S,
 };
 
 enum macro_id {
-
-    // macros
-    MC_EURO,
-    MC_POUND,
-
-    M_AUM,
-    M_OUM,
-    M_UUM,
-    M_SZ
+    mAU,
+    mOU,
+    mUM,
+    mSZ
 };
 
 /*
  * Fn action definition
  */
 const uint16_t PROGMEM fn_actions[] = {
-    [F_NML] = ACTION_LAYER_TAP_KEY(1, KC_N),            // Momentary Layer1 on N key
-    [F_TML] = ACTION_LAYER_TAP_KEY(2, KC_T),            // Momentary Layer2 on T key
-    [F_HMS] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_H),      // Tap for H, Hold for Shift
-    [F_EMS] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_E),      // Tap for E, Hold for Shift
-    [F_SMA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_S),      // Tap for S, Hold for Alt
-    [F_AMN] = ACTION_LAYER_TAP_KEY(3, KC_A),            // Tap for A, Hold for Layer3 (numpad)
-    [F_QMN] = ACTION_LAYER_TAP_KEY(4, KC_Q),            // Tap for Q, Hold for Layer4 (numbers)
-    [F_IMF] = ACTION_LAYER_TAP_KEY(5, KC_I),            // Tap for I, Hold for Layer5 (fkeys)
-    [F_RMG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_R),      // Tap for R, Hold for LGUI (win/command)
-    [F_UMG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_U),      // Tap for U, Hold for LGUI (win/command)
-    [F_OMA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_O),      // Tap for O, Hold for Alt
+    [fNL] = ACTION_LAYER_TAP_KEY(1, KC_N),            // Momentary Layer1 on N key
+    [fTL] = ACTION_LAYER_TAP_KEY(2, KC_T),            // Momentary Layer2 on T key
+    [fHS] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_H),      // Tap for H, Hold for Shift
+    [fES] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_E),      // Tap for E, Hold for Shift
+    [fSA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_S),      // Tap for S, Hold for Alt
+    [fAN] = ACTION_LAYER_TAP_KEY(3, KC_A),            // Tap for A, Hold for Layer3 (numbers)
+    [fQN] = ACTION_LAYER_TAP_KEY(4, KC_Q),            // Tap for Q, Hold for Layer4 (numpad)
+    [fIF] = ACTION_LAYER_TAP_KEY(5, KC_I),            // Tap for I, Hold for Layer5 (fkeys)
+    [fRG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_R),      // Tap for R, Hold for LGUI (win/command)
+    [fUG] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_U),      // Tap for U, Hold for LGUI (win/command)
+    [fOA] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_O),      // Tap for O, Hold for Alt
 
-    [F_CTL]  = ACTION_MODS_ONESHOT(MOD_LCTL), // oneshot CTRL
-    [F_ALT]  = ACTION_MODS_ONESHOT(MOD_LALT), // oneshot ALT
-    [F_SFT]  = ACTION_MODS_ONESHOT(MOD_LSFT), // oneshot SHIFT
+    [f_C]  = ACTION_MODS_ONESHOT(MOD_LCTL), // oneshot CTRL
+    [f_A]  = ACTION_MODS_ONESHOT(MOD_LALT), // oneshot ALT
+    [f_S]  = ACTION_MODS_ONESHOT(MOD_LSFT), // oneshot SHIFT
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -262,130 +295,72 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                 `--------------------'       `--------------------'
      */
 
-[L0_DEF] = KEYMAP(  // Layer0, Left hand.
-      esc_____,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5, win_____,
-      tab_____, F(F_QMN),     KC_D, F(F_RMG),    KC_W ,     KC_B, right___,
-      ________, F(F_AMN), F(F_SMA), F(F_HMS), F(F_TML),     KC_G,
-      F(F_SFT),     KC_Z,     KC_X,     KC_M,     KC_C,     KC_V, left____,
-      mute____, ________, ________, F(F_ALT), F(F_CTL),
-                                                        lshift__, home____,
-                                                                  end_____,
-                                              tab_____,  KC_BSPC, esc_____,
+[L0_DEF] = KEYMAP_EASY( // Layer0, Left hand.
+esc___,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5, win___,    print_,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0, del___,
+tab___, F(fQN),   KC_D, F(fRG),  KC_W ,   KC_B, right_,    up____,   KC_J,   KC_F, F(fUG),   KC_P, ______, ______,
+______, F(fAN), F(fSA), F(fHS), F(fTL),   KC_G,                      KC_Y, F(fNL), F(fES), F(fOA), F(fIF), ______,
+F(f_S),   KC_Z,   KC_X,   KC_M,   KC_C,   KC_V, left__,    down__,   KC_K,   KC_L, comma_, dot___, minus_, ______,
+mute__, ______, ______, F(f_A), F(f_C),                                    F(f_C), F(f_A), volup_, voldn_, numlo_,
+                                        lshft_, home__,    pgup__, lshft_,
+                                                end___,    pgdn__,
+                                tab___, bspc__, esc___,    ______, enter_, space_
+),
 
-      // Right hand.
-      print___,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0, del_____,
-      up______,     KC_J,     KC_F, F(F_UMG),     KC_P, ________, ________,
-                    KC_Y, F(F_NML), F(F_EMS), F(F_OMA), F(F_IMF), ________,
-      down____,     KC_K,     KC_L, comma___, dot_____, minus___, ________,
-                          F(F_CTL), F(F_ALT), volup___, voldown_, numlock_,
-      pgup____, lshift__,
-      pgdown__,
-      ________, enter___, space___
-    ),
-
-[L1_LFT] = KEYMAP(  // Layer1, left hand, to be used with TML
-       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-       t_______,  KC_CIRC,  KC_SLSH, up______, bslash__, asterisk, t_______,
-       t_______, home____, left____, down____, right___, end_____,
-       capslock, amp_____, pgup____, pgdown__, scolon__, dollar__, t_______,
-       t_______, t_______, t_______, t_______, t_______,
-                                                         t_______, t_______,
-                                                                   t_______,
-                                               t_______, del_____, t_______,
-
-             // right hand empty
-       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-                 t_______, t_______, t_______, t_______, t_______, t_______,
-       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-                           t_______, t_______, t_______, t_______, t_______,
-       t_______, t_______,
-       t_______,
-       t_______, t_______,t_______
-    ),
+[L1_LFT] = KEYMAP_EASY( // Layer1, left hand, to be used with TML
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, circ__, slash_, up____, bslash, aster_, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, home__, left__, down__, right_, end___,                    _____t, _____t, _____t, _____t, _____t, _____t,
+capslo, amp___, pgup__, pgdn__, scolon, dollar, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t,                                    _____t, _____t, _____t, _____t, _____t,
+                                        _____t, _____t,    _____t, _____t,
+                                                _____t,    _____t,
+                                _____t, del___, _____t,    _____t, _____t, _____t
+),
 
 
-[L2_RGT] = KEYMAP(   // Layer2, left hand, empty
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______,
-                                                          t_______, t_______,
-                                                                    t_______,
-                                                t_______, t_______, t_______,
+[L2_RGT] = KEYMAP_EASY( // Layer2, left hand, empty
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, btick_, lprn__, excl__, rprn__, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t,                    equls_, lbrck_, hash__, rbrck_, quot__, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, perc__, _____t, _____t, _____t, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t,                                    _____t, _____t, _____t, _____t, _____t,
+                                        _____t, _____t,    _____t, _____t,
+                                                _____t,    _____t,
+                                _____t, _____t, _____t,    _____t, _____t, _____t
+),
 
-             // right hand, to be used with AML
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, KC_GRAVE, lparen__,  KC_EXLM, rparen__, t_______, t_______,
-                  equals__, lbracket,  KC_HASH, rbracket, quot____, t_______,
-        t_______, percent_, t_______, t_______, t_______, t_______, t_______,
-                            t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______,
-        t_______,
-        t_______, t_______, t_______
-    ),
+[L3_NUM] = KEYMAP_EASY( // Layer3, numbers
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, _____t,   KC_7,   KC_8,   KC_9, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t,                    _____t,   KC_4,   KC_5,   KC_6, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, _____t,   KC_1,   KC_2,   KC_3, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t,                                      KC_0, _____t, _____t, _____t, _____t,
+                                        _____t, _____t,    _____t, _____t,
+                                                _____t,    _____t,
+                                _____t, _____t, _____t,    _____t, _____t, _____t
+),
 
-[L3_NUM] = KEYMAP(   // Layer3, numbers
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______,
-                                                          t_______, t_______,
-                                                                    t_______,
-                                                t_______, t_______, t_______,
+[L4_NUM] = KEYMAP_EASY( // Layer3, numbers (numpad)
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, _____t, pad_7_, pad_8_, pad_9_, p_div_, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t,                    _____t, pad_4_, pad_5_, pad_6_, p_mul_, _____t,
+_____t, _____t, _____t, _____t, _____t, _____t, _____t,    _____t, _____t, pad_1_, pad_2_, pad_3_, p_sub_, _____t,
+_____t, _____t, _____t, _____t, _____t,                                    pad_0_, p_dot_, p_com_, p_add_, _____t,
+                                        _____t, _____t,    _____t, _____t,
+                                                _____t,    _____t,
+                                _____t, _____t, _____t,    _____t, _____t, _____t
+),
 
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______,     KC_7,     KC_8,     KC_9, t_______, t_______,
-                  t_______,     KC_4,     KC_5,     KC_6, t_______, t_______,
-        t_______, t_______,     KC_1,     KC_2,     KC_3, t_______, t_______,
-                                KC_0, t_______, t_______, t_______, t_______,
-        t_______, t_______,
-        t_______,
-        t_______, t_______, t_______
-    ),
-
-[L4_NUM] = KEYMAP(   // Layer3, numbers (numpad)
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, t_______, t_______, t_______,
-                                                          t_______, t_______,
-                                                                    t_______,
-                                                t_______, t_______, t_______,
-
-        t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-        t_______, t_______, pad_7___, pad_8___, pad_9___, pad_div_, t_______,
-                  t_______, pad_4___, pad_5___, pad_6___, pad_mul_, t_______,
-        t_______, t_______, pad_1___, pad_2___, pad_3___, pad_sub_, t_______,
-                            pad_0___, pad_dot_, pad_com_, pad_add_, t_______,
-        t_______, t_______,
-        t_______,
-        t_______, t_______, t_______
-    ),
-
-[L5_FKS] = KEYMAP(   // Layer4, f-keys
-        t_______, M(M_AUM), M(M_OUM), M(M_UUM),  M(M_SZ), t_______, t_______,
-        t_______, t_______, f7______, f8______, f9______, t_______, t_______,
-        t_______, f11_____, f4______, f5______, f6______, f12_____,
-        t_______, t_______, f1______, f2______, f3______, t_______, t_______,
-        t_______, t_______, t_______, t_______, f10_____,
-                                                          t_______, t_______,
-                                                                    t_______,
-                                                t_______, t_______, t_______,
-
-             // right hand empty
-       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-                 t_______, t_______, t_______, t_______, t_______, t_______,
-       t_______, t_______, t_______, t_______, t_______, t_______, t_______,
-                           t_______, t_______, t_______, t_______, t_______,
-       t_______, t_______,
-       t_______,
-       t_______, t_______,t_______
-    )
+[L5_FKS] = KEYMAP_EASY( // Layer4, f-keys
+_____t, M(mAU), M(mOU), M(mUM), M(mSZ), _____t, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, _____t, f7____, f8____, f9____, _____t, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, f11___, f4____, f5____, f6____, f12___,                    _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, _____t, f1____, f2____, f3____, _____t, _____t,    _____t, _____t, _____t, _____t, _____t, _____t, _____t,
+_____t, _____t, _____t, _____t, f10___,                                    _____t, _____t, _____t, _____t, _____t,
+                                        _____t, _____t,    _____t, _____t,
+                                                _____t,    _____t,
+                                _____t, _____t, _____t,    _____t, _____t,_____t
+)
 
 };
 
@@ -399,19 +374,19 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
 
 	switch (id) {
-        case M_SZ: // ß => alt + num 225
+        case mSZ: // ß => alt + num 225
             return MACRO( I(10), D(LALT), T(P2), T(P2), T(P5), U(LALT), END );
-        case M_AUM: // ä => alt + num 132
+        case mAU: // ä => alt + num 132
             // if ( hold_shift )  {
             //     return MACRO( I(10), D(LALT), T(P1), T(P4), T(P2), U(LALT), END );
             // }
             return MACRO( I(10), D(LALT), T(P1), T(P3), T(P2), U(LALT), END );
-        case M_OUM: // ö => alt + num 148
+        case mOU: // ö => alt + num 148
             // if ( hold_shift ) {
             //     return MACRO( I(10), D(LALT), T(P1), T(P5), T(P3), U(LALT), END );
             // }
             return MACRO( I(10), D(LALT), T(P1), T(P4), T(P8), U(LALT), END );
-        case M_UUM: // ü => alt + num 129 
+        case mUM: // ü => alt + num 129 
             // if ( hold_shift ) {
             //     return MACRO( I(10), D(LALT), T(P1), T(P5), T(P4), U(LALT), END );
             // }
